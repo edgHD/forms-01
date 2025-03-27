@@ -19,32 +19,36 @@
     <div class="form-control">
       <h2>What are you interested in?</h2>
       <div>
-        <input id="interest-news" name="interest" type="checkbox" />
+        <input id="interest-news" name="interest" type="checkbox" value="news" v-model="formData.interest" />
         <label for="interest-news">News</label>
       </div>
       <div>
-        <input id="interest-tutorials" name="interest" type="checkbox" />
+        <input id="interest-tutorials" name="interest" type="checkbox" value="tutorials" v-model="formData.interest" />
         <label for="interest-tutorials">Tutorials</label>
       </div>
       <div>
-        <input id="interest-nothing" name="interest" type="checkbox" />
+        <input id="interest-nothing" name="interest" type="checkbox" value="nothing" v-model="formData.interest" />
         <label for="interest-nothing">Nothing</label>
       </div>
     </div>
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" />
+        <input id="how-video" name="how" type="radio" value="video" v-model="formData.how" />
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-blogs" name="how" type="radio" />
+        <input id="how-blogs" name="how" type="radio" value="blogs" v-model="formData.how" />
         <label for="how-blogs">Blogs</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" />
+        <input id="how-other" name="how" type="radio" value="other" v-model="formData.how" />
         <label for="how-other">Other</label>
       </div>
+    </div>
+    <div class="form-control">
+      <input type="checkbox" id="confirm-terms" name="confirm-terms" v-model="confirm" />
+      <label for="confirm-terms">I agree to the terms and conditions.</label>
     </div>
     <div>
       <button>Save Data</button>
@@ -62,7 +66,8 @@ export default {
         referrer: '',
         interest: [],
         how: ''
-      }
+      },
+      confirm: false,
     };
   },
   methods: {
@@ -70,9 +75,15 @@ export default {
       console.log('Name: ' + this.formData.userName);
       console.log('Age: ' + this.formData.age);
       console.log('Referrer: ' + this.formData.referrer);
+      console.log('Interest: ' + this.formData.interest);
+      console.log('How: ' + this.formData.how);
+      console.log('Terms confirmed: ' + this.confirm);
       this.formData.userName = '';
       this.formData.age = null;
       this.formData.referrer = '';
+      this.formData.interest = [];
+      this.formData.how = '';
+      this.confirm = false;
     }
   }
 }
