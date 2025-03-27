@@ -1,9 +1,10 @@
 <template>
-  <form @submit.prevent="submitForm" :class="{ invalid: formData.userNameValidity === false }">
-    <div class="form-control">
+  <form @submit.prevent="submitForm">
+    <div class="form-control" :class="{ invalid: formData.userNameValidity === false }">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" v-model.trim="formData.userName" @blur="validateInput" />
-      <p v-if="formData.userNameValidity === false">Please enter a valid name!</p>
+      <input id="user-name" name="user-name" type="text"
+        :placeholder="formData.userNameValidity === false ? 'Please enter a valid name!' : ''"
+        v-model.trim="formData.userName" @blur="validateInput" />
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -113,8 +114,12 @@ form {
 }
 
 .form-control.invalid input {
-  background-color: #ffd7d7;
   border-color: #ff0000;
+  background-color: #ffdddd;
+}
+
+.form-control.invalid input::placeholder {
+  color: #750000;
 }
 
 label {
