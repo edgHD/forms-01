@@ -6,7 +6,7 @@
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" />
+      <input id="age" name="age" type="number" v-model="formData.age" />
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -58,7 +58,7 @@ export default {
     return {
       formData: {
         userName: '',
-        age: '',
+        age: null,
         referrer: '',
         interest: [],
         how: ''
@@ -68,7 +68,9 @@ export default {
   methods: {
     submitForm() {
       console.log('Name: ' + this.formData.userName);
+      console.log('Age: ' + this.formData.age);
       this.formData.userName = '';
+      this.formData.age = null;
     }
   }
 }
